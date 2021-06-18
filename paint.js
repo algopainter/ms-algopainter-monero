@@ -26,7 +26,7 @@ module.exports = async ({
   const contentBase64 = 'data:image/png;base64,' + Buffer.from(gweiPaintingResponse.data, 'binary').toString('base64');
   const styleBase64 = 'data:image/jpeg;base64,' + await fs.readFile(stylePath, { encoding: 'base64' });
 
-  console.log(`Generating the new painting`);
+  console.log(`Generating the new painting at ${process.env.MS_STYLE_TRANSFER}`);
   const result = await axios.post(process.env.MS_STYLE_TRANSFER, {
     content_new_size: "0",
     style_new_size: "0",
