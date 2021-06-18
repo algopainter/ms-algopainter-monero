@@ -39,14 +39,15 @@ module.exports = async ({
     maxBodyLength: Infinity,
   });
 
-  const imageResult = await Jimp.read(Buffer.from(result.data.image.replace("data:image/jpeg;base64,", ""), "base64"));
+  const imageResult = await Jimp.read(Buffer.from(result.data.image.replace("data:image/png;base64,", ""), "base64"));
+
 
   imageResult.resize(1520, 1520);
 
   let frame = Math.floor(rng() * 6);
   let frameImage = null;
 
-  console.log(`Using the frame ${frameImage}`);
+  console.log(`Using the frame ${frame}`);
 
   if (frame === 0) {
     frameImage = await Jimp.read("./frames/frame0.png");
